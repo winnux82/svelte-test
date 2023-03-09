@@ -1,12 +1,16 @@
 <script>
+	import { createEventDispatcher } from 'svelte';
 	export let bar = 'optional default initial value';
 	// export let baz = undefined;
 	let title = 'Welcome to my playlist!';
 	let name = 'message de sam';
 
 	let nb1 = 10;
-	let nb2 = 20;
-	let result = nb1 * nb2;
+	let nb2 = 10;
+	let result = 0;
+	function calculate() {
+		result = nb1 * nb2;
+	}
 	// setInterval(() => {
 	// 	console.log('name', name);
 	// }, 2000);
@@ -16,6 +20,11 @@
 	function handleClick() {
 		count = count + 1;
 	}
+
+	let user = {
+		firstname: 'Ada',
+		lastname: 'Lovelace'
+	};
 </script>
 
 <h1>{title}</h1>
@@ -28,6 +37,9 @@
 	{count === 1 ? 'time' : 'times'}
 </button>
 <h2>{count}</h2>
+{#if count % 2 === 0}
+	<p>Count {count} est divisible par 2</p>
+{/if}
 
 <div>
 	1 x {count} = {1 * count}<br />
@@ -44,5 +56,14 @@
 
 <input bind:value={name} />
 <br />
+<h3>Via variable</h3>
 <input bind:value={nb1} />*<input bind:value={nb2} />
+{nb1 * nb2}
+
+<h3>Via on:keyup</h3>
+<input bind:value={nb1} on:keyup={calculate} />*<input bind:value={nb2} on:keyup={calculate} />
 Résultat: {result}
+
+{@debug user}
+
+<h1>Hello {user.firstname}!</h1>
