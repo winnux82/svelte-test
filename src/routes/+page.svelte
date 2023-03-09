@@ -1,2 +1,48 @@
-<h1>Welcome to SvelteKit</h1>
+<script>
+	export let bar = 'optional default initial value';
+	// export let baz = undefined;
+	let title = 'Welcome to my playlist!';
+	let name = 'message de sam';
+
+	let nb1 = 10;
+	let nb2 = 20;
+	let result = nb1 * nb2;
+	// setInterval(() => {
+	// 	console.log('name', name);
+	// }, 2000);
+
+	let count = 0;
+
+	function handleClick() {
+		count = count + 1;
+	}
+</script>
+
+<h1>{title}</h1>
 <p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+{bar}
+<!-- {baz} -->
+
+<button on:click={handleClick}>
+	Clicked {count}
+	{count === 1 ? 'time' : 'times'}
+</button>
+<h2>{count}</h2>
+
+<div>
+	1 x {count} = {1 * count}<br />
+	2 x {count} = {2 * count}<br />
+	3 x {count} = {3 * count}<br />
+	4 x {count} = {4 * count}<br />
+	5 x {count} = {5 * count}<br />
+	6 x {count} = {6 * count}<br />
+	7 x {count} = {7 * count}<br />
+	8 x {count} = {8 * count}<br />
+	9 x {count} = {9 * count}<br />
+	10 x {count} = {10 * count}<br />
+</div>
+
+<input bind:value={name} />
+<br />
+<input bind:value={nb1} />*<input bind:value={nb2} />
+Résultat: {result}
